@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<script type="application/javascript">
+			function draw_img(){
+				var canvas = document.getElementById('c');
+				if(canvas.getContext)
+				{
+					var cntx = canvas.getContext('2d');
+					var img = new Image();
+					img.onload=function(){
+						cntx.drawImage(img, 100, 50, 150, 200, 0, 0, 150, 200);
+					}
+					img.src="../image/flw.jpg";
+				}
+				else
+				{
+					alert("브라우저에서 지원하지 않습니다")
+				}
+			}
+		</script>
+		<title>html5 테스</title>
+	</head>
+	<body onload="draw_img()">
+		<canvas id="c" width="500" height="500"></canvas>
+	</body>
+</html>

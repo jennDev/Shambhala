@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<script type="application/javascript">
+			function draw(){
+				var canvas = document.getElementById('c');
+				var cntx = canvas.getContext('2d');
+				cntx.save();
+				
+				for(i=0; i<4; i++)
+				{
+					cntx.fillStyle="rgb(200, 0, 0)";
+					cntx.globalAlpha=0.9-0.2*i;
+					cntx.fillRect(0,0, 50, 50);
+					cntx.translate(60, 0);
+				}
+				
+				cntx.restore();
+				cntx.save();
+				for(i=0; i<4; i++)
+				{
+					cntx.fillStyle="rgb(0, 200, 0)";
+					cntx.globalAlpha=0.9-0.2*i;
+					cntx.fillRect(0, 60, 50, 50);
+					cntx.translate(60, 0);
+				}
+				
+				cntx.restore();
+				cntx.save();
+				for(i=0; i<4; i++)
+				{
+					cntx.fillStyle="rgb(0, 0, 200)";
+					cntx.globalAlpha=0.9-0.2*i;
+					cntx.fillRect(0, 120, 50, 50);
+					cntx.translate(60, 0);
+				}
+				cntx.restore();		
+			}
+			
+			function rotate(){
+				var canvas = document.getElementById('c');
+				var cntx = canvas.getContext('2d');
+				cntx.save();
+				
+				cntx.translate(200, 200);
+				
+				for(i=0; i<10; i++)
+				{
+					cntx.fillStyle="rgb(200, 0 ,0)";
+					cntx.globalAlpha =  1-0.1*i;
+					cntx.fillRect(0, 0, 150, 50);
+					cntx.rotate(Math.PI*2/10);
+				}
+				cntx.restore();
+			}
+			
+			function scale(){
+				var canvas = document.getElementById('c');
+				var cntx = canvas.getContext('2d');
+				cntx.save();
+				
+				cntx.fillStyle="rgb(200, 0 ,0)";
+				cntx.fillRect(0, 0, 150, 50);
+				
+				cntx.scale(2, 2);
+				cntx.fillRect(0, 0, 150, 50);
+				cntx.restore();
+					
+				}
+				
+			function clearcanvas(){
+				var canvas = document.getElementById('c');
+				var cntx = canvas.getContext('2d');
+				
+				cntx.clearRect(0, 0, canvas.width, canvas.height);
+				}
+
+		</script>
+		<title>html5 테스트</title>
+	</head>
+	
+	<body>
+	<div>
+		<button id="draw" onclick="draw()">draw</button>
+		<button id="rotate" onclick="rotate()">rotate</button>
+		<button id="scale" onclick="scale()">scale</button>
+		<button id="clear" onclick="clearcanvas()">clear</button>
+	</div>
+		<canvas id="c" width="800" height="800"></canvas>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<style type="text/css">
+		canvas{
+			border: 1px solid #999;
+		}
+		
+	</style>
+	<script type="application/javascript">
+		function draw_pattern(){
+			var canvas = document.getElementById('m');
+			if(canvas.getContext)
+			{
+				var ctx = canvas.getContext('2d');
+				var img = new Image();
+				img.src = '../image/pattern.jpg';
+				img.onload = function(){
+					var pttn = ctx.createPattern(img, 'repeat');
+					ctx.fillStyle = pttn;
+					ctx.fillRect(0,0,800, 800);
+				}
+			}
+			else
+			{
+				alert("부라우저에서 지원하지 않습니다");
+			}
+		}
+	</script>
+	</head>
+	
+	<body onload="draw_pattern()">
+		<canvas id="m" width="800" height="800"></canvas>
+	</body>
+</html>

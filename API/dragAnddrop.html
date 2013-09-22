@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style>
+#boxA, #boxB, #boxC { 
+  float:left; width:200px; height:200px; padding:10px; margin:10px;
+}
+
+#boxA { background-color: yellow; }
+#boxB { border: 2px solid red;}
+#boxC { border:2px solid blue; }
+
+#redball, #blueball, #redball2, #blueball2 {
+  width:50px; height:50px; padding:6px; margin:6px;
+  color:white;
+  display:inline-table;
+}
+
+#redball, #redball2 { background-color: red;}
+#blueball, #blueball2 { background-color: blue;}
+</style>
+<script type="text/javascript">
+function dragStart(ev) {
+    ev.dataTransfer.effectAllowed='move';
+    ev.dataTransfer.setData("Text", ev.target.getAttribute('id'));
+    ev.dataTransfer.setDragImage(ev.target,0,0);
+    return true;
+}
+
+function dragEnter(ev) {
+    return true;
+}
+
+function dragOver(ev) {
+    var idelt = ev.dataTransfer.getData("Text");
+    var id = ev.target.getAttribute('id');
+    if( id =='boxB' && (idelt == 'redball'|| idelt == 'redball2')) return false;
+    else if( id =='boxC' && (idelt == 'blueball'|| idelt == 'blueball2'))
+        return false;
+
+}
+
+function dragEnd(ev) {
+    ev.dataTransfer.clearData("Text");
+    return true
+}
+
+function dragDrop(ev) {
+    var idelt = ev.dataTransfer.getData("Text");
+    ev.target.appendChild(document.getElementById(idelt));
+    ev.stopPropagation();
+    return false; 
+}
+
+</script>
+
+</head>
+
+<body>
+    <div id="boxA"
+        ondragenter="return dragEnter(event)"
+        ondrop="return dragDrop(event)"
+        ondragover="return dragOver(event)">
+
+      <div id="redball" draggable="true"
+            ondragstart="return dragStart(event)"
+            ondragend="return dragEnd(event)">red</div>
+
+      <div id="blueball" draggable="true"
+            ondragstart="return dragStart(event)"
+            ondragend="return dragEnd(event)">blue</div>
+
+      <div id="blueball2" draggable="true"
+            ondragstart="return dragStart(event)"
+            ondragend="return dragEnd(event)">blue</div>
+
+      <div id="redball2" draggable="true"
+            ondragstart="return dragStart(event)"
+            ondragend="return dragEnd(event)">red</div>
+
+    </div>
+
+    <div id="boxB"
+        ondragenter="return dragEnter(event)"
+        ondrop="return dragDrop(event)"
+        ondragover="return dragOver(event)">
+    </div>
+    <div id="boxC"
+        ondragenter="return dragEnter(event)"
+        ondrop="return dragDrop(event)"
+        ondragover="return dragOver(event)">
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<script type="application/javascript">
+			function draw(){
+				var canvas = document.getElementById('c');
+				var cntx = canvas.getContext('2d');
+				var img = new Image();
+				img.onload = function(){
+					cntx.drawImage(img, 10, 10);
+				}
+				img.src = '../image/flw.jpg';
+				
+				cntx.beginPath();
+				cntx.arc(200, 110, 100, 0, Math.PI*2, true);
+				cntx.clip();
+			}
+		</script>
+		<title>html5 테스</title>
+	</head>
+
+	<body onload="draw()">
+		<canvas id="c" width="500" height="500"></canvas>		
+	</body>
+</html>

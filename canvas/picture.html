@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<script type="application/javascript">
+		function draw(){
+			var canvas = document.getElementById('gallery');
+			var img_flower = document.getElementById('source');
+			var img_frame=document.getElementById('frame');
+			
+			var cntx = canvas.getContext('2d');
+			cntx.drawImage(img_flower, 200, 100, 300, 200, 30, 30, 300, 200);
+			cntx.drawImage(img_frame, 30, 30);
+			
+		}
+		</script>
+		<title>html5 테스</title>
+	</head>
+	<body onload="draw()">
+		<canvas id="gallery" width="500" height="400"></canvas>
+		<div style="visibility:hidden;">
+			<img id="source" src="../image/flw.jpg" width="500" height="375" />
+			<img id="frame" src="../image/frame.png" width="330" height="254" />
+		</div>
+	</body>
+</html>
+
